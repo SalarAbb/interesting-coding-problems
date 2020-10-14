@@ -68,7 +68,7 @@ class Solution:
         print(t_dict)
         return min_win
 ```
-## 3. Count the triplets([link](https://practice.geeksforgeeks.org/problems/count-the-triplets4615/1)):
+## 3. Count the triplets ([link](https://practice.geeksforgeeks.org/problems/count-the-triplets4615/1)):
 My solution:
 ```
 class Solution:
