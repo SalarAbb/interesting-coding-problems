@@ -95,3 +95,58 @@ class Solution:
         
         return results
 ```
+
+## 4. Longest palindrome in a string ([link](https://practice.geeksforgeeks.org/problems/longest-palindrome-in-a-string/0)):
+My solution:
+```
+#code
+
+import sys
+
+def longest_palindrome(s):
+    n = len(s)
+    # check some default test cases
+    if n == 1:
+        return s
+    if n == 2:
+        if s[0] == s[1]:
+            return s
+        else:
+            return s[0]
+    # main algorithm        
+    length_max = 1
+    max_pal = s[0]
+    for i in range(1, 2*n - 1):
+        # set the left and right pointers 
+        if i % 2 == 0:
+            left_pointer = int(i/2) - 1
+            right_pointer = int(i/2) + 1
+        else:
+            left_pointer = int((i-1)/2)
+            right_pointer = int((i-1)/2) + 1
+        # check palindrome    
+        while(left_pointer >= 0 and right_pointer <= n - 1):
+            if s[left_pointer] == s[right_pointer]:
+                length_this = right_pointer - left_pointer + 1
+                if length_this > length_max:
+                    max_pal = s[left_pointer:right_pointer + 1]
+                    length_max = length_this
+                left_pointer -= 1
+                right_pointer += 1    
+            else:
+                break
+    return max_pal
+# get test cases
+i = 0
+test_cases = {}
+for line in sys.stdin:
+    line= line.strip()
+    if i == 0:
+        num_test_cases = int(line)
+    else:
+        test_cases[i - 1] = line
+    i += 1    
+# print the output   
+for i in range( len( test_cases ) ):
+    print(longest_palindrome(test_cases[i]))
+```
