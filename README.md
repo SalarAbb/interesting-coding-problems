@@ -68,3 +68,30 @@ class Solution:
         print(t_dict)
         return min_win
 ```
+## 3. Count the triplets([link](https://practice.geeksforgeeks.org/problems/count-the-triplets4615/1)):
+My solution:
+```
+class Solution:
+    
+    def countTriplet(self, arr, n):
+	    # code here
+        count = 0
+        for num in arr:
+            results = self.two_elem_sum(arr,num)
+            count += len(results)
+        
+
+        return count    
+
+    def two_elem_sum(self,arr,target):
+        # a variation of 2 element sum
+        d_obs = {}
+        results = []
+        for i, num in enumerate(arr):
+            d_obs[num] = 1
+            if target - num in d_obs and num != target - num:
+                if (target-num, num, target) not in results and (num, target-num, target) not in results:
+                    results.append( (num, target-num, target) )
+        
+        return results
+```
