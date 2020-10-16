@@ -150,3 +150,96 @@ for line in sys.stdin:
 for i in range( len( test_cases ) ):
     print(longest_palindrome(test_cases[i]))
 ```
+## 5. Flood fill Algorithm ([link](https://practice.geeksforgeeks.org/problems/flood-fill-algorithm/0)):
+My solution:
+```
+#code
+import collections
+import sys
+
+def get_prop_neighbors(tab, neighbors, p_this, c):
+    num_rows = len(tab)
+    num_cols = len(tab[0])
+    x, y = p_this[0], p_this[1]
+    
+    prop_neighbors = []
+    for possible_point in [(x+1,y), (x-1,y), (x,y+1), (x,y-1)]:
+        i, j = possible_point[0], possible_point[1]
+        if i in range(num_rows) and j in range(num_cols) and tab[i][j] == c and (i, j) not in neighbors:
+            prop_neighbors.append((i,j))
+    
+    return prop_neighbors        
+    
+
+def get_neighbors_and_paint(tab, x, y, c_new):
+    # get the color
+    c = tab[x][y]
+    # get all the cloud neighbors by the same color
+    neighbors = [(x,y)]
+    q = [(x,y)]   
+    
+    while(q != []):
+        num_this = len(q)
+        for i in range(num_this):
+            # popleft
+            p_this = q[0]
+            if len(q) == 1:
+                q = []
+            else:
+                q = q[1:]
+                
+            prop_neighbors_this = get_prop_neighbors(tab, neighbors, p_this, c)
+            neighbors += prop_neighbors_this
+            q += prop_neighbors_this
+
+    for p in neighbors:
+        i, j = p[0], p[1]
+        tab[i][j] = c_new
+    
+    return tab
+    
+def turn_tab_to_output(tab):
+    out = []
+    for i in tab:
+        out += [str(j) for j in i]
+    
+    return ' '.join(out)    
+
+# read the input
+i = 0
+test_cases = {}
+for line in sys.stdin:
+    line = line.strip()
+    if i == 0:
+        num_cases = int(line)
+    else:
+        line = line.split(' ')
+        
+        if i % 3 == 1:
+            case_num = int((i - i%3)/3) 
+            test_cases[case_num] = {}
+            num_rows, num_cols = int(line[0]), int(line[1])
+            test_cases[case_num]['num_rows'] = num_rows
+            test_cases[case_num]['num_cols'] = num_cols
+        elif i % 3 == 2:
+            tab = [[0 for j in range(num_cols)] for m in range(num_rows)]
+            for m in range(num_rows):
+                for j in range(num_cols):
+                    tab[m][j] = int(line[m * num_cols + j])
+            test_cases[case_num]['tab'] = tab
+         
+        elif i % 3 == 0:
+            x, y, c_new = int(line[0]), int(line[1]), int(line[2])
+            test_cases[case_num]['x'] = x
+            test_cases[case_num]['y'] = y
+            test_cases[case_num]['c_new'] = c_new
+            
+    
+    i += 1    
+
+# generate the output
+for i in range(len(test_cases)):
+    tab = get_neighbors_and_paint(test_cases[i]['tab'], test_cases[i]['x'], test_cases[i]['y'], test_cases[i]['c_new'])
+    print(turn_tab_to_output(tab))
+
+```
