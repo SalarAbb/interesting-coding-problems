@@ -243,3 +243,71 @@ for i in range(len(test_cases)):
     print(turn_tab_to_output(tab))
 
 ```
+## 6. Find median in a stream ([link](https://practice.geeksforgeeks.org/problems/find-median-in-a-stream/0)):
+My solution:
+```
+#code
+import sys
+import heapq
+import numpy as np
+def add_input_to_heaps(heap_min,heap_max,len_heap_min,len_heap_max,inp):
+    # we record len_heap_min and len_heap_max to save time
+    if len_heap_min == 0:
+        heapq.heappush(heap_min, inp)
+        len_heap_min += 1
+    elif len_heap_max == 0:
+        heapq.heappush(heap_max, -inp)
+        len_heap_max += 1
+    else:    
+        min_heap_min = heap_min[0]
+        max_heap_max = - heap_max[0]
+        
+        if inp >= min_heap_min or (inp < min_heap_min and inp > max_heap_max):
+            heapq.heappush(heap_min,inp)
+            len_heap_min += 1
+        else:
+            heapq.heappush(heap_max,-inp)
+            len_heap_max += 1
+        # we always keep len_heap_min equals to len_heap_max or 1 larger
+        if len_heap_max == len_heap_min + 1:
+            a = heapq.heappop(heap_max)
+            max_heap_max = - a
+            heapq.heappush(heap_min,max_heap_max)
+            len_heap_min += 1
+            len_heap_max -= 1
+        elif len_heap_min == len_heap_max + 2:     
+            min_heap_min = heapq.heappop(heap_min)
+            heapq.heappush(heap_max,-min_heap_min)
+            len_heap_min -= 1
+            len_heap_max += 1
+        
+    return heap_min, heap_max, len_heap_min, len_heap_max    
+        
+def get_median_from_heaps(heap_min,heap_max,len_heap_min,len_heap_max):
+    if len_heap_min == len_heap_max:
+        return int( np.floor(float((heap_min[0] - heap_max[0]))/2) )
+    elif len_heap_min == len_heap_max + 1:
+        return heap_min[0]
+    else:
+        assert 1==0, 'There exists a bug'
+
+i = 0    
+arr = []
+for line in sys.stdin:
+    line = line.strip()
+    if i == 0:
+        num_cases = int(line)
+    else:
+        arr.append(int(line))
+    i += 1
+
+# create output
+heap_min = []#heapq.heapify([])
+heap_max = []#heapq.heapify([])
+len_heap_min = 0
+len_heap_max = 0
+    
+for inp in arr:
+    heap_min,heap_max,len_heap_min,len_heap_max = add_input_to_heaps(heap_min,heap_max,len_heap_min,len_heap_max,inp)
+    print(get_median_from_heaps(heap_min,heap_max,len_heap_min,len_heap_max))
+```
