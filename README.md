@@ -160,6 +160,8 @@ for i in range( len( test_cases ) ):
 ```
 ## 5. Flood fill Algorithm ([link](https://practice.geeksforgeeks.org/problems/flood-fill-algorithm/0)):
 My solution:
+
+Time complextiy: O(C), Space complextiy: O(C), where C is the color cloud/flood size
 ```
 #code
 import collections
