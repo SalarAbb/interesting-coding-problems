@@ -3,6 +3,7 @@ Here I list interesting coding problems I have seen over the internet
 
 ## 1. Continueous subarray with maximum sum, aka Kardane's algorithm ([link](https://practice.geeksforgeeks.org/problems/kadanes-algorithm/0))
 My solution:
+
 Time complextiy: O(n), Space complextiy: O(1)
 ```
 import sys
@@ -43,6 +44,8 @@ for i in range(len(cases)):
 ## 2. Minimum window substring ([link](https://leetcode.com/problems/minimum-window-substring/submissions/))
 
 My solution (another interesting solutions is using 2 pointers to expand from right and contract from left):
+
+Time complextiy: O(S*T), Space complextiy: O(T)
 ```
 class Solution:
     def minWindow(self, s: str, t: str) -> str:
@@ -71,6 +74,8 @@ class Solution:
 ```
 ## 3. Count the triplets ([link](https://practice.geeksforgeeks.org/problems/count-the-triplets4615/1)):
 My solution:
+
+Time complextiy: O(n^2), Space complextiy: O(n)
 ```
 class Solution:
     
@@ -99,6 +104,8 @@ class Solution:
 
 ## 4. Longest palindrome in a string ([link](https://practice.geeksforgeeks.org/problems/longest-palindrome-in-a-string/0)):
 My solution:
+
+Time complextiy: O(n^2), Space complextiy: O(1)
 ```
 #code
 
@@ -246,6 +253,8 @@ for i in range(len(test_cases)):
 ```
 ## 6. Find median in a stream ([link](https://practice.geeksforgeeks.org/problems/find-median-in-a-stream/0)):
 My solution:
+
+Time complextiy: O(log(n)), Space complextiy: O(n)
 ```
 #code
 import sys
