@@ -17,3 +17,4 @@ Here I list interesting coding problems I have seen over the internet. **My solu
 
 ## 8. Regions cut by slashes ([link](https://leetcode.com/problems/regions-cut-by-slashes/submissions/))**
 
+## 9. Longest consecutive sequence ([link](https://leetcode.com/problems/longest-consecutive-sequence/submissions/))*
