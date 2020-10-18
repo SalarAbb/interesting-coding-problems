@@ -14,3 +14,6 @@ Here I list interesting coding problems I have seen over the internet. **My solu
 ## 6. Find median in a stream ([link](https://practice.geeksforgeeks.org/problems/find-median-in-a-stream/0))
 
 ## 7. Relative sorting ([link](https://practice.geeksforgeeks.org/problems/relative-sorting/0))
+
+## 8. Regions cut by slashes ([link](https://leetcode.com/problems/regions-cut-by-slashes/submissions/)):
+
