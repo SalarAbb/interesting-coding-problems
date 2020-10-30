@@ -22,3 +22,5 @@ Here I list interesting coding problems I have seen over the internet. **My solu
 ## 10. Kth largest element in a stream ([link](https://practice.geeksforgeeks.org/problems/kth-largest-element-in-a-stream/0))
 
 ## 11. Special Keyboard ([link](https://practice.geeksforgeeks.org/problems/special-keyboard3018/1))
+
+## 12. Longest Increasing Subsequence ([link](https://leetcode.com/problems/longest-increasing-subsequence/))**
