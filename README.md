@@ -24,3 +24,5 @@ Here I list interesting coding problems I have seen over the internet. **My solu
 ## 11. Special Keyboard ([link](https://practice.geeksforgeeks.org/problems/special-keyboard3018/1))
 
 ## 12. Longest Increasing Subsequence ([link](https://leetcode.com/problems/longest-increasing-subsequence/))**
+
+## 13. Egg Dropping Puzzle([link](https://practice.geeksforgeeks.org/problems/egg-dropping-puzzle-1587115620/1))*
